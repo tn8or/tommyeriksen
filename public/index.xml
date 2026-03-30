@@ -6,7 +6,15 @@
     <description>Recent content on tommyeriksen.dk</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <lastBuildDate>Thu, 26 Mar 2026 18:14:05 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>http://localhost:1313/posts/first-post/</link>
+      <pubDate>Thu, 26 Mar 2026 18:14:05 +0100</pubDate>
+      <guid>http://localhost:1313/posts/first-post/</guid>
+      <description>&lt;p&gt;asdfsdf&lt;/p&gt;</description>
+    </item>
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
