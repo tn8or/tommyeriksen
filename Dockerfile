@@ -6,5 +6,5 @@ RUN hugo --minify
 
 # Stage 2: Serve with nginx
 FROM nginx:alpine
-COPY --from=builder --chown=nginx:nginx /src/public /usr/share/nginx/html
+COPY --from=builder /src/public /usr/share/nginx/html
 EXPOSE 80
