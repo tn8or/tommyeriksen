@@ -12,11 +12,6 @@ theme = "hugo-theme-m10c"
     url = "/"
     weight = 1
   [[menu.main]]
-    identifier = "tags"
-    name = "Tags"
-    url = "/tags/"
-    weight = 2
-  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
@@ -43,6 +38,18 @@ theme = "hugo-theme-m10c"
     icon = "brand-facebook"
     name = "facebook"
     url = "https://www.facebook.com/tommy.eriksen"
+  [[params.social]]
+    name = "instagram"
+    icon = "instagram"
+    url = "https://www.instagram.com/tn8or"
+  [[params.social]]
+    icon = "brand-threads"
+    name = "threads"
+    url = "https://www.threads.net/@tn8or"
+  [[params.social]]
+    icon = "youtube"
+    name = "youtube"
+    url = "https://www.youtube.com/@EriksenAevler"
 
   # Default theme
   # [params.style]
