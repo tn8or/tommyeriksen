@@ -70,13 +70,13 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Register Microsoft.App provider
-        uses: azure/cli@v2
+        uses: azure/cli@v3
         with:
           inlineScript: |
             az provider register -n Microsoft.App --wait
 
       - name: Update Container App image
-        uses: azure/cli@v2
+        uses: azure/cli@v3
         with:
           inlineScript: |
             az containerapp update \
