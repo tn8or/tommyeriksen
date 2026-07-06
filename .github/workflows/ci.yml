@@ -77,6 +77,3 @@ jobs:
               --name ca-tommyeriksen \
               --resource-group rg-tommyeriksen \
               --image ghcr.io/tn8or/tommyeriksen:latest \
-              --registry-server ghcr.io \
-              --registry-username ${{ github.actor }} \
-              --registry-password ${{ secrets.GITHUB_TOKEN }}
