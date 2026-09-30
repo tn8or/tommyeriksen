@@ -2,14 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-    "automerge": true,
-    "automergeType": "pr",
-    "platformAutomerge": true,
-    "ignoreTests": false,
-    "prHourlyLimit": 1,
-    "timezone": "Europe/Copenhagen",
-    "schedule": [
-        "at any time"
-    ],
+  ],
+  "enabledManagers": [
+    "dockerfile",
+    "github-actions",
+    "git-submodules"
+  ],
+  "automerge": true,
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "ignoreTests": false,
+  "prHourlyLimit": 1,
+  "timezone": "Europe/Copenhagen",
+  "schedule": [
+    "at any time"
   ]
 }
