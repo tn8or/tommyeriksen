@@ -1,0 +1,5 @@
+{{- $src := .Destination -}}
+{{- with .Page.Resources.Get $src -}}
+  {{- $src = .RelPermalink -}}
+{{- end -}}
+<img src="{{ $src | safeURL }}" alt="{{ .Text }}"{{- with .Title }} title="{{ . }}"{{ end }} />

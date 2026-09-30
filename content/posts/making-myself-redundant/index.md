@@ -4,6 +4,8 @@ draft = false
 title = 'Making myself redundant?'
 +++
 
+![Small robot agents racing along a track, kept on course by guardrails, towards a human approval gate](agent-guardrails-hero.jpg)
+
 So. When I did infrastructure engineering, I had a mantra: make yourself redundant. Whatever you're doing, automate it so it can run over and over. That freed me up for the important stuff, like coffee. Or YouTube (which hadn't really been invented yet).
 
 Come to think of it, when I made the roadmap for my first PO gig (an operations team), there was a dot on it where it made sense for me to exit and a new skill set to take over.
@@ -35,6 +37,8 @@ Then we moved to heavy manual code review, with me running all the tests myself 
 Now the first line is other agents. An automated review agent catches concrete code errors, but more importantly it predicts regressions. It'll come back with something like "you've technically solved the task, but X, Y and Z can break in A, B and C ways", and send the task straight back to the coding agent. They sort it out between them before it ever reaches me.
 
 So my part has shifted. It's less "is this line of code correct?" and more of a sanity check: did the agent actually go in the direction I had in mind when we started? That's the question the other agents can't answer for me.
+
+![Agent guardrails diagram: goal, code agent, review agent sending work back, human gate where only a human merges, goes on air, and an approved shared knowledge base feeding the next session](guardrails-flow.png)
 
 ## Teaching the future (carefully)
 
