@@ -1,5 +1,5 @@
 +++
-date = '2026-10-14T08:00:00+02:00'
+date = '2026-10-07'
 draft = false
 title = 'Brilliant at filtering, rubbish at being you'
 +++
