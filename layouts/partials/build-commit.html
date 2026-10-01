@@ -1,0 +1,39 @@
+{{- /* Full source revision this build was produced from.
+     CI and Docker set site.Params.commit (HUGO_PARAMS_commit / GIT_COMMIT).
+     A local hugo build falls back to the git checkout when that is unset. */ -}}
+{{- $commit := site.Params.commit | default "" | string | strings.TrimSpace | lower -}}
+{{- if not $commit -}}
+  {{- $headRead := try (os.ReadFile ".git/HEAD") -}}
+  {{- if not $headRead.Err -}}
+    {{- $head := strings.TrimSpace $headRead.Value -}}
+    {{- if hasPrefix $head "ref:" -}}
+      {{- $ref := $head | strings.TrimPrefix "ref:" | strings.TrimSpace -}}
+      {{- $refRead := try (os.ReadFile (printf ".git/%s" $ref)) -}}
+      {{- if not $refRead.Err -}}
+        {{- $commit = lower (strings.TrimSpace $refRead.Value) -}}
+      {{- end -}}
+      {{- if not $commit -}}
+        {{- $packed := try (os.ReadFile ".git/packed-refs") -}}
+        {{- if not $packed.Err -}}
+          {{- range split $packed.Value "\n" -}}
+            {{- if not $commit -}}
+              {{- $line := strings.TrimSpace . -}}
+              {{- if and $line (not (hasPrefix $line "#")) (not (hasPrefix $line "^")) -}}
+                {{- $parts := split $line " " -}}
+                {{- if and (ge (len $parts) 2) (eq (index $parts 1) $ref) -}}
+                  {{- $commit = lower (index $parts 0) -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $commit = lower $head -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not (findRE "^[0-9a-f]{7,40}$" $commit) -}}
+  {{- $commit = "" -}}
+{{- end -}}
+{{- $commit -}}

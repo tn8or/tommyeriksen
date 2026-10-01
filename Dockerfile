@@ -2,6 +2,11 @@
 FROM hugomods/hugo:0.165.0 AS builder
 WORKDIR /src
 COPY . .
+# .git is excluded from the build context, so the source revision has to be
+# passed in. CI sets this to github.sha. Locally:
+#   docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) .
+ARG GIT_COMMIT=
+ENV HUGO_PARAMS_commit=${GIT_COMMIT}
 RUN hugo --minify
 
 # Stage 2: Serve with nginx
