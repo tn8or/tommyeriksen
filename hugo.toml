@@ -17,6 +17,11 @@ buildFuture = true
     name = "About"
     url = "/about/"
     weight = 3
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/about/cv/"
+    weight = 4
 
 [params]
   author = "Tommy Eriksen"
