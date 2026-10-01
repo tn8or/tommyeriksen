@@ -1,0 +1,13 @@
+{{- $commit := partial "build-commit.html" . | strings.TrimSpace -}}
+{{- with $commit -}}
+<footer class="app-footer">
+  {{- $short := substr . 0 7 -}}
+  {{- $repo := site.Params.repository | default "" | strings.TrimSpace | strings.TrimSuffix "/" -}}
+  Built from
+  {{- if $repo }}
+  <a class="app-footer-commit" href="{{ printf "%s/commit/%s" $repo . }}" title="Commit {{ . }}" rel="noopener noreferrer">{{ $short }}</a>
+  {{- else }}
+  <code class="app-footer-commit" title="Commit {{ . }}">{{ $short }}</code>
+  {{- end }}
+</footer>
+{{- end -}}
