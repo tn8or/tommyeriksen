@@ -10,7 +10,7 @@ ENV HUGO_PARAMS_commit=${GIT_COMMIT}
 RUN hugo --minify
 
 # Stage 2: Serve with nginx
-FROM nginx:alpine
+FROM nginx:1.31.6-alpine
 COPY --from=builder /src/public /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
