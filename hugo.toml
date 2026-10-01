@@ -20,6 +20,8 @@ theme = "hugo-theme-m10c"
 [params]
   author = "Tommy Eriksen"
   description = "Geek at heart"
+  # Source repository. The footer links the build commit here.
+  repository = "https://github.com/tn8or/tommyeriksen"
   menu_item_separator = " - "
   avatar = "avatar.png"
   [[params.social]]
