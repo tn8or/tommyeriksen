@@ -1,6 +1,7 @@
 baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
 theme = "hugo-theme-m10c"
+buildFuture = true
 
 [pagination]
   pagerSize = 8
