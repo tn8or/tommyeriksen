@@ -73,6 +73,12 @@ The last check was the most old-fashioned one. I read everything out loud before
 
 If it didn't sound like something I'd actually say across a table, it went. No exceptions for nice-sounding sentences. Especially not for nice-sounding sentences.
 
+## A starting point, if you want one
+
+A word of caution before you hand an agent your whole life. It only knows what you give it, and what you give it is up to you. Decide where your limits are before you start, not after. I'd keep it to things I'd be fine seeing quoted back: old applications, recommendations I'd written, professional emails. Not private messages, and certainly not declarations of love. Whatever you feed it is the voice you'll get back.
+
+With that said, here are the instructions I started from: [career-sparring-agent.md](/career-sparring-agent.md). It's not a recipe. It's a skeleton, and the first thing it tells the agent to do is find out who you are: how you write, what you want, what you won't do again. Change whatever doesn't fit.
+
 ## So, should you use AI for your applications?
 
 Probably, yes. Just not to replace yourself.
