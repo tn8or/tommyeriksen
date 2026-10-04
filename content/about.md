@@ -2,8 +2,12 @@
 title = "About"
 +++
 
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lacinia lorem quis sodales auctor. Donec bibendum odio leo, bibendum iaculis lectus dapibus sit amet. Etiam ut euismod lectus, vel finibus metus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer quis vestibulum justo. Duis scelerisque ullamcorper sem, eget congue lorem ultrices mattis. Nam ut mollis tellus, id facilisis turpis. Duis ac egestas mi, a mattis dolor. Curabitur vestibulum est nec tortor hendrerit, vehicula malesuada quam tempor. Duis ornare tortor dapibus, scelerisque est lacinia, aliquet mi. Vivamus convallis malesuada augue ac viverra. Sed molestie erat at sem dapibus porttitor. Vestibulum lacinia, enim id feugiat varius, felis erat sollicitudin nisl, sit amet semper nisi nunc in nisl. Sed dapibus ullamcorper nulla, et molestie lacus accumsan ac.
+Tommy of Kingdom Geek.
 
-Fusce auctor in justo nec porta. Aliquam vitae molestie libero. In scelerisque dolor ac est lacinia, at consectetur neque vulputate. Curabitur ornare lorem vitae euismod vestibulum. Sed non arcu nunc. Suspendisse potenti. Maecenas tristique, dui egestas mattis pulvinar, tortor ligula mollis libero, ac ullamcorper erat nibh in augue. Curabitur nunc diam, pretium at porta et, volutpat sit amet ligula. Proin urna lorem, luctus sit amet metus quis, tempus rutrum augue. Phasellus ut nunc dolor.
+I live in the western part of Zealand with my family: Lena, my lovely wife, and our kids Freja and Joakim. And the cats. And the dogs. And the rabbits.
 
-Duis a porta mi, non viverra erat. Nam tincidunt lorem nec sollicitudin laoreet. Mauris faucibus vitae urna ac aliquet. Vivamus rutrum rhoncus tempor. Donec massa diam, molestie sit amet nulla eu, venenatis egestas urna. Vivamus hendrerit elit velit, ut volutpat diam condimentum vel. Etiam ultricies, nulla tincidunt rhoncus placerat, velit nisl gravida velit, mollis vestibulum risus mauris sed lectus.
+Born and raised in the countryside, I love having space around me. I love the fresh(er) air and the space outdoors. I'm at home in the workshop, though, where the ancient motorcycle lives: a 1998 Aprilia RSV Mille that has never done anything but race. Only ever ridden on Sundays, and only on racetracks. It takes me to Danish and Swedish circuits, and you can read more about that at [teamgummiarm.dk](https://teamgummiarm.dk/).
+
+Professionally, my work is pretty much my hobby. I started out in infrastructure, networking and hosting, back before the cloud was a thing. From there I moved into platform engineering and architecture, with automation at large scale. Then I moved into leadership, and today I'm a bit of a jack-of-all-trades, which suits me fine. These days I'm a senior cloud architect at Lundbeck, and I look after the infrastructure behind live-TV software at We Are Falcon, where AI agents do a lot of the heavy lifting and I own the guardrails.
+
+If you want the grown-up version, there's a [CV](/about/cv/).

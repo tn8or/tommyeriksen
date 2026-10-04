@@ -1,6 +1,7 @@
 baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
 theme = "hugo-theme-m10c"
+buildFuture = true
 
 [pagination]
   pagerSize = 8
@@ -16,6 +17,11 @@ theme = "hugo-theme-m10c"
     name = "About"
     url = "/about/"
     weight = 3
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/about/cv/"
+    weight = 4
 
 [params]
   author = "Tommy Eriksen"
