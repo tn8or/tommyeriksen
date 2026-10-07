@@ -88,3 +88,16 @@ buildFuture = true
   #   lightColor = "#d6d6d6"
   #   lightestColor = "#d3d3d3"
   #   primaryColor = "#ffffff"
+
+# Markdown copy of every page (index.md next to index.html). nginx serves it
+# instead of the HTML when a client sends Accept: text/markdown.
+[outputFormats.markdown]
+  mediaType = "text/markdown"
+  baseName = "index"
+  isPlainText = true
+  rel = "alternate"
+
+[outputs]
+  home = ["html", "rss", "markdown"]
+  section = ["html", "rss", "markdown"]
+  page = ["html", "markdown"]
