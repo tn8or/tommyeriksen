@@ -1,6 +1,7 @@
 baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
 theme = "hugo-theme-m10c"
+enableRobotsTXT = true
 buildFuture = true
 
 [pagination]
