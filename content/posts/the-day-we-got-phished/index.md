@@ -4,6 +4,8 @@ draft = false
 title = "The day we got phished"
 +++
 
+![Diagram: a phishing email leads to a fake login page where the two-factor code is entered too. The attackers run ads in Thai from her ad account, which gets banned, and is linked to an unknown Instagram account, locking her out of Facebook and Instagram. A dotted line back to the start reads: the way back, about a month, via a paid subscription](the-day-we-got-phished.png)
+
 I worked with security. Lena and I still got phished. Properly, all the way in.
 
 A couple of years ago, on a January day with guests on their way, an email arrived saying all of Lena's Facebook ads were about to be shut down. She was scaling up her psychotherapy practice at the time, and Facebook was her main channel for finding new clients. So we clicked the link and logged in. Of course we did.
