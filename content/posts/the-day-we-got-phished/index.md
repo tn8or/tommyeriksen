@@ -8,7 +8,7 @@ title = "The day we got phished"
 
 I worked with security. Lena and I still got phished. Properly, all the way in.
 
-A couple of years ago, on a January day with guests on their way, an email arrived saying all of Lena's Facebook ads were about to be shut down. She was scaling up her psychotherapy practice at the time, and Facebook was her main channel for finding new clients. So we clicked the link and logged in. Of course we did.
+A couple of years ago, on a January day with guests on their way, an email arrived saying all of Lena's Facebook ads were about to be shut down. She was scaling up [her psychotherapy practice](https://www.lenaeriksen.dk/) at the time, and Facebook was her main channel for finding new clients. So we clicked the link and logged in. Of course we did.
 
 We both knew better. That's the uncomfortable bit. Phishing doesn't need you to be stupid. It needs you to be busy.
 
