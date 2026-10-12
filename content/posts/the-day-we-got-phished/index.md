@@ -4,7 +4,7 @@ draft = false
 title = "The day we got phished"
 +++
 
-![Diagram: a phishing email leads to a fake login page where the two-factor code is entered too. The attackers run ads in Thai from her ad account, which gets banned, and is linked to an unknown Instagram account, locking her out of Facebook and Instagram. A dotted line back to the start reads: the way back, about a month, via a paid subscription](the-day-we-got-phished.png)
+![Illustration: two people sit on a doorstep in front of a chained door with a big padlock and an "Account locked" sign, cobwebs in the corner, a stack of coffee mugs beside them, and a wall calendar where almost every day of January is crossed out](the-day-we-got-phished.png)
 
 I worked with security. Lena and I still got phished. Properly, all the way in.
 
