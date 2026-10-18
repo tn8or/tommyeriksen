@@ -5,6 +5,8 @@ title = "From dead box to log in"
 tags = ['platform', 'lessons-learned']
 +++
 
+![Illustration: a server rack where one blade is lit green and labelled "ready for use", joined by dotted lines to the people it took: the platform architect and a couple of developers on one side, the ITSM owners, the integration engine owners and the external operations partner on the other. Caption: "Not because of the server. Because of everyone it took."](from-dead-box-to-log-in.png)
+
 Building it wasn't the hard part. I'd automated provisioning plenty of times, just never on something you could kick.
 
 Then one day a physical server came up by itself. Someone filled in a form in the ITSM system. Less than an hour later, a transition had happened: from an empty, dead blade to a fully working server. In the CMDB, disks on the SAN, OS installed, registered in all the right systems and ready to log in. Until then, that could take days.
