@@ -2,6 +2,7 @@
 date = '2026-11-25'
 draft = false
 title = "Oh wow, low-risk thrills! ... Till they aren't"
+tags = ['motorcycles', 'lessons-learned']
 +++
 
 ![Tommy leaning a blue, black and silver motorcycle hard into a corner on a racetrack on a sunny day. Photo: Morten Kimer / Kimers Foto](hero.jpg)
