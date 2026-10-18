@@ -2,6 +2,7 @@
 date = '2026-10-14'
 draft = false
 title = "What my agents aren't allowed to do"
+tags = ['ai-agents']
 +++
 
 ![Diagram: an agent commits to a repository, a human review gate stands between the repository and production, and the agent only has read-only access to observability](least-privilege-flow.png)

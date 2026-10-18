@@ -2,6 +2,7 @@
 date = '2026-10-07'
 draft = false
 title = 'Brilliant at filtering, rubbish at being you'
+tags = ['careers', 'ai-in-practice']
 +++
 
 So. When the early versions of ChatGPT came out, I was a hiring manager.
