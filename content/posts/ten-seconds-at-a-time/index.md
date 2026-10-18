@@ -2,6 +2,7 @@
 date = '2026-10-28'
 draft = false
 title = "Ten seconds at a time"
+tags = ['motorcycles']
 +++
 
 ![Tommy on an Aprilia RSV leaning through a corner on a racetrack. Photo: Morten Kimer / Kimers Foto](DSC_7733.jpg)
