@@ -2,6 +2,7 @@
 date = '2026-09-30T14:00:00+02:00'
 draft = false
 title = 'Making myself redundant?'
+tags = ['ai-agents', 'lessons-learned']
 +++
 
 ![Small robot agents racing along a track, kept on course by guardrails, towards a human approval gate](agent-guardrails-hero.jpg)

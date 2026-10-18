@@ -19,6 +19,7 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 - Hugo 0.167.0 extended. The theme is a git submodule under `themes/`; clone with `--recurse-submodules`.
 - Multi-stage `Dockerfile`: Hugo builds the site, nginx serves it (config in `nginx/`).
 - Content: posts in `content/posts/`, page bundles for posts with images (`content/posts/<slug>/index.md` + images). TOML front matter (`+++`) with date, title, draft.
+- Tags: every post gets exactly one series tag in `tags`: `ai-agents`, `careers`, `security`, `platform` or `motorcycles`. Optional topic tags on top, only where they clearly fit: `leadership`, `lessons-learned`, `ai-in-practice`. Example: `tags = ['security', 'lessons-learned']`. The scheme can be extended; a new tag gets a `content/tags/<tag>/_index.md` with its display title (otherwise Hugo shows the slug title-cased, e.g. "Ai-Agents"). The tag scheme is also documented in itsaplan (context doc 8).
 - `buildFuture` is on, so future-dated posts publish immediately.
 - The footer shows the build commit.
 
