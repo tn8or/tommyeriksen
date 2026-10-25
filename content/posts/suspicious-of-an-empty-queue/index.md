@@ -1,5 +1,5 @@
 +++
-date = '2026-10-28'
+date = '2026-10-27'
 draft = false
 title = "Why I'm suspicious of an empty queue"
 description = "A support KPI, an auto-close switch and new tickets asking why. An empty queue looks a lot like happy customers. Sometimes it's just been emptied."
