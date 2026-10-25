@@ -2,6 +2,7 @@
 date = '2026-10-29'
 draft = false
 title = "Ten seconds at a time"
+description = "Focus isn't thinking about everything. It's choosing what exists right now. On a racetrack, the world lasts about ten seconds."
 tags = ['motorcycles']
 images = ['DSC_7733_cover.jpg']
 +++
