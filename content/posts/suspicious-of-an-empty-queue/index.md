@@ -3,6 +3,7 @@ date = '2026-10-28'
 draft = false
 title = "Why I'm suspicious of an empty queue"
 tags = ['ways-of-working', 'leadership', 'lessons-learned']
+images = ['empty-queue_wide.png']
 +++
 
 ![Illustration: a support desk dashboard showing "Open tickets: 0" with a big checkmark, next to a pile of new tickets asking why they were closed. Caption: KPI achieved.](empty-queue_wide.png)
