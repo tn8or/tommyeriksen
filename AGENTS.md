@@ -20,6 +20,7 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 - Multi-stage `Dockerfile`: Hugo builds the site, nginx serves it (config in `nginx/`).
 - Content: posts in `content/posts/`, page bundles for posts with images (`content/posts/<slug>/index.md` + images). TOML front matter (`+++`) with date, title, draft.
 - Tags: every post gets exactly one series tag in `tags`: `ai-agents`, `careers`, `security`, `platform` or `motorcycles`. Optional topic tags on top, only where they clearly fit: `leadership`, `lessons-learned`, `ai-in-practice`. Example: `tags = ['security', 'lessons-learned']`. The scheme can be extended; a new tag gets a `content/tags/<tag>/_index.md` with its display title (otherwise Hugo shows the slug title-cased, e.g. "Ai-Agents"). The tag scheme is also documented in itsaplan (context doc 8).
+- Images: `layouts/_default/_markup/render-image.html` serves page-bundle images resized (WebP, `srcset`, lazy) and links them to the full-size original; remote images, SVG and GIF render as a plain img. `layouts/partials/_funcs/get-page-images.html` overrides Hugo's embedded partial so every page gets `og:image`/`twitter:image`: front matter `images` first, else the first bundle image in the body (max 1200px wide), else `params.images` in `hugo.toml`.
 - `buildFuture` is on, so future-dated posts publish immediately.
 - The footer shows the build commit.
 
