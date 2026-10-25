@@ -30,6 +30,9 @@ buildFuture = true
     weight = 4
 
 [params]
+  # Fallback og:image/twitter:image for pages without a bundle image
+  # (layouts/partials/_funcs/get-page-images.html).
+  images = ["avatar.png"]
   author = "Tommy Eriksen"
   description = "Geek at heart"
   # Source repository. The footer links the build commit here.
