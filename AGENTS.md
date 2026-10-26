@@ -29,7 +29,7 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 
 - `hugo --minify` must succeed before pushing. CI also builds the container and smoke-tests it.
 - The commit SHA is passed to Hugo as `HUGO_PARAMS_commit`.
-- CI runs on a self-hosted runner. A push to `main`, the morning schedule (cron 06:00 and 07:00 UTC; a gate job skips the one before 08:00 Copenhagen) and a manual run push `:latest`, which is what goes live. **Merging to `main` deploys tommyeriksen.dk.**
+- CI runs on a self-hosted runner. A push to `main`, the morning schedule (cron 06:00 and 07:00 UTC; a gate job runs only the one that is 08:00 in Copenhagen) and a manual run push `:latest`, which is what goes live. **Merging to `main` deploys tommyeriksen.dk.**
 - PR builds pass `STAGING_URL` to the `Dockerfile`: baseURL `https://staging.tommyeriksen.dk/`, `--buildFuture`, and `params.staging` (noindex meta, `Disallow: /` in robots.txt). Only PRs from this repo with the `staging` label push `:staging`.
 - Never push to `main` directly; work via PR.
 - Renovate auto-merges Hugo, Docker image, Actions and submodule bumps. Keep the Hugo version in `Dockerfile` and `.github/workflows/ci.yml` in sync.

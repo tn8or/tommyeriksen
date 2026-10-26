@@ -21,6 +21,7 @@ CI runs `scripts/lint-front-matter.py` before the build and fails with the file 
 - `description`: present, at most 155 characters. It is the meta description and the text under the link on social media.
 - `tags`: exactly one series tag. The series are listed in `data/tags.toml`; add a new series there, plus `content/tags/<tag>/_index.md` with its display title. Topic tags (`leadership`, `lessons-learned`, `ai-in-practice`) are optional.
 - `date`: present and a valid date (`'2026-11-05'`) or date-time.
+- `ogAnchor` (optional): one of Hugo's anchors, see Images below.
 
 Run it locally with `python3 scripts/lint-front-matter.py`.
 
