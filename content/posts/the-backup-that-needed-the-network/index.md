@@ -1,5 +1,5 @@
 +++
-date = '2026-11-17'
+date = '2026-12-03'
 draft = false
 title = "The backup that needed the network"
 description = "My network config backups ran as planned and monitoring was green. At 3am I found they lived on a server that needed the network they could restore."
