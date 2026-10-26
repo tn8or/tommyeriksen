@@ -2,6 +2,7 @@
 date = '2026-09-30T14:00:00+02:00'
 draft = false
 title = 'Making myself redundant?'
+description = "I haven't written infrastructure code since January. Agents do it now. What it took to keep them on track, and where a human still has to say yes."
 tags = ['ai-agents', 'lessons-learned']
 +++
 

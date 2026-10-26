@@ -2,7 +2,11 @@ baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
 theme = "hugo-theme-m10c"
 enableRobotsTXT = true
-buildFuture = true
+# Posts go live on their `date`: future-dated posts are left out until a build
+# on or after that date (the scheduled morning build in ci.yml). A bare
+# date = 'YYYY-MM-DD' is midnight in this time zone.
+buildFuture = false
+timeZone = 'Europe/Copenhagen'
 
 [pagination]
   pagerSize = 8
@@ -110,3 +114,12 @@ buildFuture = true
   home = ["html", "rss", "markdown"]
   section = ["html", "rss", "markdown"]
   page = ["html", "markdown"]
+
+# Don't publish raw page-bundle files (multi-MB originals with EXIF). Only
+# what a template uses gets published: resized images, the 3000px full-size
+# copy (render-image.html), og:image, SVG.
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+  [cascade.target]
+    path = '/posts/**'

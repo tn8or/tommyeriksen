@@ -2,6 +2,7 @@
 date = '2026-10-14'
 draft = false
 title = "What my agents aren't allowed to do"
+description = "Least privilege for agents: they can commit, but not merge, touch production, read secrets or change observability. And why the gate stays."
 tags = ['ai-agents']
 +++
 

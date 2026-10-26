@@ -2,6 +2,7 @@
 date = '2026-10-07'
 draft = false
 title = 'Brilliant at filtering, rubbish at being you'
+description = "AI made every cover letter sound like nobody's. How I used an agent for my own job hunt: one long master CV, filtered per posting, nothing invented."
 tags = ['careers', 'ai-in-practice']
 +++
 

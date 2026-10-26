@@ -2,6 +2,7 @@
 date = '2026-10-21'
 draft = false
 title = "The day we got phished"
+description = "I worked with security, and we still got phished. One fake login, two-factor and all, turned into a month locked out of Facebook and Instagram."
 tags = ['security', 'lessons-learned']
 +++
 
