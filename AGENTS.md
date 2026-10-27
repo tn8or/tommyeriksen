@@ -30,7 +30,7 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 - `hugo --minify` must succeed before pushing. CI also builds the container and smoke-tests it.
 - The commit SHA is passed to Hugo as `HUGO_PARAMS_commit`.
 - CI runs on a self-hosted runner. A push to `main`, the morning schedule (cron 06:00 UTC) and a manual run push `:latest`, which is what goes live. **Merging to `main` deploys tommyeriksen.dk.**
-- PR builds pass `STAGING_URL` to the `Dockerfile`: baseURL `https://staging.tommyeriksen.dk/`, `--buildFuture`, and `params.staging` (noindex meta, `Disallow: /` in robots.txt). Only PRs from this repo with the `staging` label push `:staging`.
+- PR builds pass `STAGING_URL` to the `Dockerfile`: baseURL `https://staging.tommyeriksen.dk/`, `--buildFuture`, and `params.staging` (noindex meta, `Disallow: /` in robots.txt). Every PR from this repo pushes `:staging` (latest push wins).
 - `.github/workflows/cleanup.yml` runs Sundays 03:00 UTC: deletes untagged `ghcr.io/tn8or/tommyeriksen` versions beyond the 10 newest (tagged images and their child manifests are kept) and prunes dangling images on the runner. A manual run defaults to dry-run. The host (k3s) garbage-collects its own images.
 - Never push to `main` directly; work via PR.
 - Renovate auto-merges Hugo, Docker image, Actions and submodule bumps. Keep the Hugo version in `Dockerfile` and `.github/workflows/ci.yml` in sync.
