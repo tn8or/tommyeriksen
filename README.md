@@ -7,7 +7,7 @@ Personal blog plus About and CV pages. Hugo (theme m10c), served by nginx in a c
 1. Add the post as a page bundle: `content/posts/<slug>/index.md` plus its images.
 2. Open a PR. Add the `staging` label to preview it on https://staging.tommyeriksen.dk/ (future-dated posts are included there).
 3. Merge when it's approved. The merge does not have to wait for the publishing day.
-4. The post goes live at 08:00 Copenhagen time on its `date`: a scheduled build of `main` runs every morning and pushes `:latest`. A post merged on or after its date goes live with that merge.
+4. The post goes live on its `date` at 08:00 Copenhagen time in summer, 07:00 in winter (06:00 UTC): a scheduled build of `main` runs every morning and pushes `:latest`. A post merged on or after its date goes live with that merge.
 5. LinkedIn posts go out at 11:00, after the site is live.
 
 `date` is read in Europe/Copenhagen, so `date = '2026-11-05'` means 5 November. To publish now or rebuild by hand, run the CI workflow from the Actions tab (workflow_dispatch on `main`).
