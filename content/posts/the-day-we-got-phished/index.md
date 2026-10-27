@@ -2,6 +2,8 @@
 date = '2026-10-21'
 draft = false
 title = "The day we got phished"
+description = "I worked with security, and we still got phished. One fake login, two-factor and all, turned into a month locked out of Facebook and Instagram."
+tags = ['security', 'lessons-learned']
 +++
 
 ![Illustration: two people sit on a doorstep in front of a chained door with a big padlock and an "Account locked" sign, cobwebs in the corner, a stack of coffee mugs beside them, and a wall calendar where almost every day of January is crossed out](the-day-we-got-phished.png)

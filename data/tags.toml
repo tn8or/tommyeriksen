@@ -1,0 +1,5 @@
+# Tag scheme for posts. Every post has exactly one series tag, plus optional
+# topic tags. scripts/lint-front-matter.py reads the series list; add a new
+# series here (and a content/tags/<tag>/_index.md with its display title).
+series = ['ai-agents', 'careers', 'security', 'platform', 'motorcycles', 'ways-of-working']
+topics = ['leadership', 'lessons-learned', 'ai-in-practice']

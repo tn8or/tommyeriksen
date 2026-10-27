@@ -1,7 +1,12 @@
 baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
 theme = "hugo-theme-m10c"
-buildFuture = true
+enableRobotsTXT = true
+# Posts go live on their `date`: future-dated posts are left out until a build
+# on or after that date (the scheduled morning build in ci.yml). A bare
+# date = 'YYYY-MM-DD' is midnight in this time zone.
+buildFuture = false
+timeZone = 'Europe/Copenhagen'
 
 [pagination]
   pagerSize = 8
@@ -12,6 +17,11 @@ buildFuture = true
     name = "Home"
     url = "/"
     weight = 1
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 2
   [[menu.main]]
     identifier = "about"
     name = "About"
@@ -24,6 +34,9 @@ buildFuture = true
     weight = 4
 
 [params]
+  # Fallback og:image/twitter:image for pages without a bundle image
+  # (layouts/partials/_funcs/get-page-images.html).
+  images = ["avatar.png"]
   author = "Tommy Eriksen"
   description = "Geek at heart"
   # Source repository. The footer links the build commit here.
@@ -88,3 +101,25 @@ buildFuture = true
   #   lightColor = "#d6d6d6"
   #   lightestColor = "#d3d3d3"
   #   primaryColor = "#ffffff"
+
+# Markdown copy of every page (index.md next to index.html). nginx serves it
+# instead of the HTML when a client sends Accept: text/markdown.
+[outputFormats.markdown]
+  mediaType = "text/markdown"
+  baseName = "index"
+  isPlainText = true
+  rel = "alternate"
+
+[outputs]
+  home = ["html", "rss", "markdown"]
+  section = ["html", "rss", "markdown"]
+  page = ["html", "markdown"]
+
+# Don't publish raw page-bundle files (multi-MB originals with EXIF). Only
+# what a template uses gets published: resized images, the 3000px full-size
+# copy (render-image.html), og:image, SVG.
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+  [cascade.target]
+    path = '/posts/**'
