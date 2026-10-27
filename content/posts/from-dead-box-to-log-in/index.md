@@ -2,6 +2,7 @@
 date = '2026-11-05'
 draft = false
 title = "From dead box to log in"
+description = "Someone filled in a form, and less than an hour later a dead blade was a working server. Building it wasn't the hard part. Everyone it took was."
 tags = ['platform', 'lessons-learned']
 +++
 

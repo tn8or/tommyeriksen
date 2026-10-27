@@ -2,6 +2,7 @@
 date = '2026-11-25'
 draft = false
 title = "Oh wow, low-risk thrills! ... Till they aren't"
+description = "My first motorcycle trackday felt like the safest place I'd ever ridden. No trees, no oncoming traffic. On day two, I crashed."
 tags = ['motorcycles', 'lessons-learned']
 +++
 
