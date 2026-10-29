@@ -12,6 +12,10 @@ ENV HUGO_PARAMS_commit=${GIT_COMMIT}
 # future-dated posts are included so they can be previewed, and the site is
 # noindex (params.staging).
 ARG STAGING_URL=
+# Changes on every CI run, so the Hugo step is never served from the layer
+# cache: buildFuture=false decides on the build day, which the cache key
+# would not otherwise see.
+ARG BUILD_TIME=
 RUN if [ -n "$STAGING_URL" ]; then \
       HUGO_PARAMS_staging=true hugo --minify --baseURL "$STAGING_URL" --buildFuture; \
     else \

@@ -25,6 +25,7 @@ jobs:
       contents: read
     outputs:
       sha: ${{ steps.commit.outputs.sha }}
+      build_time: ${{ steps.commit.outputs.build_time }}
       tag: ${{ steps.target.outputs.tag }}
       staging_url: ${{ steps.target.outputs.staging_url }}
 
@@ -40,7 +41,12 @@ jobs:
 
       - name: Resolve the commit being built
         id: commit
-        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+        # build_time feeds the Hugo layer's cache key. Without it a morning
+        # build of an unchanged main reuses yesterday's cached site, and a
+        # post dated today never goes live (WEBS-14).
+        run: |
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "build_time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Python
         uses: actions/setup-python@v7
@@ -94,6 +100,7 @@ jobs:
           tags: tommyeriksen:ci
           build-args: |
             GIT_COMMIT=${{ steps.commit.outputs.sha }}
+            BUILD_TIME=${{ steps.commit.outputs.build_time }}
             STAGING_URL=${{ steps.target.outputs.staging_url }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -189,6 +196,7 @@ jobs:
           tags: ghcr.io/tn8or/tommyeriksen:${{ needs.build.outputs.tag }}
           build-args: |
             GIT_COMMIT=${{ needs.build.outputs.sha }}
+            BUILD_TIME=${{ needs.build.outputs.build_time }}
             STAGING_URL=${{ needs.build.outputs.staging_url }}
           cache-from: type=gha
 
@@ -204,5 +212,6 @@ jobs:
           tags: ghcr.io/tn8or/tommyeriksen:staging
           build-args: |
             GIT_COMMIT=${{ needs.build.outputs.sha }}
+            BUILD_TIME=${{ needs.build.outputs.build_time }}
             STAGING_URL=https://staging.tommyeriksen.dk/
           cache-from: type=gha
