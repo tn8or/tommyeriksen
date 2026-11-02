@@ -1,6 +1,6 @@
 # tommyeriksen.dk
 
-Personal blog plus About and CV pages. Hugo (theme m10c), served by nginx in a container. See `AGENTS.md` for the build details.
+Personal blog plus About and CV pages. Hugo (theme Stack), served by nginx in a container. See `AGENTS.md` for the build details.
 
 ## Publishing a post
 
