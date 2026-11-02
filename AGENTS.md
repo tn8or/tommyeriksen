@@ -1,6 +1,6 @@
 # Agent guide: tommyeriksen
 
-Hugo site for tommyeriksen.dk: personal blog plus About and CV pages, in English, theme m10c.
+Hugo site for tommyeriksen.dk: personal blog plus About and CV pages, in English, theme Stack.
 
 ## How work is coordinated
 
@@ -21,7 +21,7 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 - Content: posts in `content/posts/`, page bundles for posts with images (`content/posts/<slug>/index.md` + images). TOML front matter (`+++`) with date, title, draft.
 - Tags: every post gets exactly one series tag in `tags`: `ai-agents`, `careers`, `security`, `platform` or `motorcycles`. Optional topic tags on top, only where they clearly fit: `leadership`, `lessons-learned`, `ai-in-practice`. Example: `tags = ['security', 'lessons-learned']`. The scheme can be extended; a new tag gets a `content/tags/<tag>/_index.md` with its display title (otherwise Hugo shows the slug title-cased, e.g. "Ai-Agents"). The tag scheme is also documented in itsaplan (context doc 8).
 - Front matter: every non-draft post needs `description` (max 155 chars), exactly one series tag and a valid `date`. `scripts/lint-front-matter.py` checks it in CI; the series list is `data/tags.toml`. Rules are in `README.md`.
-- Images: `layouts/_default/_markup/render-image.html` serves page-bundle images resized (WebP, `srcset`, lazy) and links them to a full-size copy capped at 3000px (EXIF dropped); remote images, SVG and GIF render as a plain img. Posts have `build.publishResources = false` (cascade in `hugo.toml`), so raw bundle files are only published when a template uses them. `layouts/partials/_funcs/get-page-images.html` overrides Hugo's embedded partial so every page gets `og:image`/`twitter:image`: front matter `images` first (wider than 1200px becomes a 1200px JPEG), else a 1200x630 crop of the first bundle image in the body (anchor from front matter `ogAnchor`, default Smart), else `params.images` in `hugo.toml`. `baseof.html` adds `og:image:width`/`height`.
+- Images: `layouts/_default/_markup/render-image.html` serves page-bundle images resized (WebP, `srcset`, lazy) and links them to a full-size copy capped at 3000px (EXIF dropped); remote images, SVG and GIF render as a plain img. Posts have `build.publishResources = false` (cascade in `hugo.toml`), so raw bundle files are only published when a template uses them. `layouts/partials/_funcs/get-page-images.html` overrides Hugo's embedded partial so every page gets `og:image`/`twitter:image`: front matter `images` first (wider than 1200px becomes a 1200px JPEG), else a 1200x630 crop of the first bundle image in the body (anchor from front matter `ogAnchor`, default Smart), else `params.images` in `hugo.toml`. `layouts/_partials/head/custom.html` adds `og:image:width`/`height` and staging noindex metadata.
 - Date-based publishing: `buildFuture = false`, `timeZone = 'Europe/Copenhagen'`. A future-dated post merged to `main` goes live with the scheduled morning build on its date (06:00 UTC: 08:00 Copenhagen in summer, 07:00 in winter).
 - The footer shows the build commit.
 

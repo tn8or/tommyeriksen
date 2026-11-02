@@ -1,0 +1,10 @@
+{{- /* Keep the existing social preview dimensions and staging noindex behavior. */ -}}
+{{- with partial "_funcs/get-page-images" . -}}
+  {{- with (index . 0).Image -}}
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+  {{- end -}}
+{{- end -}}
+{{- if site.Params.staging }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}

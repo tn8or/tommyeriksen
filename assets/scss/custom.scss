@@ -1,0 +1,23 @@
+:root {
+    --accent-color: #0d6efd;
+    --accent-color-darker: #2a3149;
+
+    &[data-scheme="dark"] {
+        --accent-color: #8b92a9;
+        --accent-color-darker: #3d4563;
+    }
+}
+
+.build-commit {
+    margin: 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.metricool-pixel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}

@@ -1,6 +1,6 @@
 baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
-theme = "hugo-theme-m10c"
+theme = "hugo-theme-stack"
 enableRobotsTXT = true
 # Posts go live on their `date`: future-dated posts are left out until a build
 # on or after that date (the scheduled morning build in ci.yml). A bare
@@ -46,66 +46,71 @@ timeZone = 'Europe/Copenhagen'
   description = "Geek at heart"
   # Source repository. The footer links the build commit here.
   repository = "https://github.com/tn8or/tommyeriksen"
-  menu_item_separator = " - "
-  avatar = "avatar.png"
-  [[params.social]]
+  mainSections = ["posts"]
+  [params.sidebar]
+    avatar = "/avatar.png"
+    subtitle = "Geek at heart"
+  [params.footer]
+    since = 2026
+  [params.colorScheme]
+    toggle = true
+    default = "dark"
+  [params.article]
+    toc = false
+    readingTime = true
+    [params.article.list]
+      showTags = true
+
+# Stack reads social links from menu entries.
+[[menu.social]]
+  name = "GitHub"
+  url = "https://github.com/tn8or"
+  weight = 1
+  [menu.social.params]
     icon = "brand-github"
-    name = "Github"
-    url = "https://github.com/tn8or"
-  [[params.social]]
+    newTab = true
+[[menu.social]]
+  name = "Bluesky"
+  url = "https://bsky.app/profile/tommyeriksen.dk"
+  weight = 2
+  [menu.social.params]
     icon = "brand-bluesky"
-    name = "bluesky"
-    url = "https://bsky.app/profile/tommyeriksen.dk"
-  [[params.social]]
+    newTab = true
+[[menu.social]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/toeriksen/"
+  weight = 3
+  [menu.social.params]
     icon = "brand-linkedin"
-    name = "LinkedIn"
-    url = "https://www.linkedin.com/in/toeriksen/"
-  [[params.social]]
+    newTab = true
+[[menu.social]]
+  name = "Facebook"
+  url = "https://www.facebook.com/tommy.eriksen"
+  weight = 4
+  [menu.social.params]
     icon = "brand-facebook"
-    name = "facebook"
-    url = "https://www.facebook.com/tommy.eriksen"
-  [[params.social]]
-    name = "instagram"
-    icon = "instagram"
-    url = "https://www.instagram.com/tn8or"
-  [[params.social]]
+    newTab = true
+[[menu.social]]
+  name = "Instagram"
+  url = "https://www.instagram.com/tn8or"
+  weight = 5
+  [menu.social.params]
+    icon = "brand-instagram"
+    newTab = true
+[[menu.social]]
+  name = "Threads"
+  url = "https://www.threads.net/@tn8or"
+  weight = 6
+  [menu.social.params]
     icon = "brand-threads"
-    name = "threads"
-    url = "https://www.threads.net/@tn8or"
-  [[params.social]]
-    icon = "youtube"
-    name = "youtube"
-    url = "https://www.youtube.com/@EriksenAevler"
-
-  # Default theme
-  # [params.style]
-  #   darkestColor = "#242930"
-  #   darkColor = "#353b43"
-  #   lightColor = "#afbac4"
-  #   lightestColor = "#ffffff"
-  #   primaryColor = "#57cc8a"
-
-  # Green theme
-  # [params.style]
-  #   darkestColor = "#315659"
-  #   darkColor = "#253031"
-  #   lightColor = "#96a879"
-  #   lightestColor = "#fff"
-  #   primaryColor = "#dad865"
-# Blue theme
-[params.style]
-    darkestColor = "#2a3149"
-    darkColor = "#3d4563"
-    lightColor = "#8b92a9"
-    lightestColor = "#ffffff"
-    primaryColor = "#0d6efd"
-  # Red theme
-  # [params.style]
-  #   darkestColor = "#d35050"
-  #   darkColor = "#212121"
-  #   lightColor = "#d6d6d6"
-  #   lightestColor = "#d3d3d3"
-  #   primaryColor = "#ffffff"
+    newTab = true
+[[menu.social]]
+  name = "YouTube"
+  url = "https://www.youtube.com/@EriksenAevler"
+  weight = 7
+  [menu.social.params]
+    icon = "brand-youtube"
+    newTab = true
 
 # Markdown copy of every page (index.md next to index.html). nginx serves it
 # instead of the HTML when a client sends Accept: text/markdown.
