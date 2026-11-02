@@ -48,7 +48,7 @@ timeZone = 'Europe/Copenhagen'
   repository = "https://github.com/tn8or/tommyeriksen"
   mainSections = ["posts"]
   [params.sidebar]
-    avatar = "avatar.png"
+    avatar = "/avatar.png"
     subtitle = "Geek at heart"
   [params.footer]
     since = 2026
@@ -74,42 +74,42 @@ timeZone = 'Europe/Copenhagen'
   url = "https://bsky.app/profile/tommyeriksen.dk"
   weight = 2
   [menu.social.params]
-    icon = "link"
+    icon = "brand-bluesky"
     newTab = true
 [[menu.social]]
   name = "LinkedIn"
   url = "https://www.linkedin.com/in/toeriksen/"
   weight = 3
   [menu.social.params]
-    icon = "link"
+    icon = "brand-linkedin"
     newTab = true
 [[menu.social]]
   name = "Facebook"
   url = "https://www.facebook.com/tommy.eriksen"
   weight = 4
   [menu.social.params]
-    icon = "link"
+    icon = "brand-facebook"
     newTab = true
 [[menu.social]]
   name = "Instagram"
   url = "https://www.instagram.com/tn8or"
   weight = 5
   [menu.social.params]
-    icon = "link"
+    icon = "brand-instagram"
     newTab = true
 [[menu.social]]
   name = "Threads"
   url = "https://www.threads.net/@tn8or"
   weight = 6
   [menu.social.params]
-    icon = "link"
+    icon = "brand-threads"
     newTab = true
 [[menu.social]]
   name = "YouTube"
   url = "https://www.youtube.com/@EriksenAevler"
   weight = 7
   [menu.social.params]
-    icon = "link"
+    icon = "brand-youtube"
     newTab = true
 
 # Markdown copy of every page (index.md next to index.html). nginx serves it

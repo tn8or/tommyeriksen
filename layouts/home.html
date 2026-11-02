@@ -1,0 +1,24 @@
+{{ define "main" }}
+    {{- $paginator := partial "helper/paginator.html" . -}}
+    {{- $posts := $paginator.Pages -}}
+    {{- with first 1 $posts -}}
+        {{- range . -}}
+            {{ partial "article/article" . }}
+        {{- end -}}
+    {{- end -}}
+
+    {{- with after 1 $posts -}}
+        <section class="article-list--compact">
+            {{- range . -}}
+                {{ partial "article-list/compact" . }}
+            {{- end -}}
+        </section>
+    {{- end -}}
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
