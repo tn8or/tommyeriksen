@@ -23,15 +23,20 @@ timeZone = 'Europe/Copenhagen'
     url = "/tags/"
     weight = 2
   [[menu.main]]
+    identifier = "start-here"
+    name = "Start here"
+    url = "/start-here/"
+    weight = 3
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 3
+    weight = 4
   [[menu.main]]
     identifier = "cv"
     name = "CV"
     url = "/about/cv/"
-    weight = 4
+    weight = 5
 
 [params]
   # Fallback og:image/twitter:image for pages without a bundle image
