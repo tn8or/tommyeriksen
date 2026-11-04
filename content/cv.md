@@ -1,5 +1,6 @@
 +++
 title = "CV"
+description = "CV for Tommy Eriksen, Senior Cloud & Platform Architect: 25 years in IT, platform ownership in banking and pharma, AI agents with guardrails."
 url = "/about/cv/"
 +++
 

@@ -1,5 +1,6 @@
 baseURL = "https://tommyeriksen.dk"
 title = "tommyeriksen.dk"
+locale = "en"
 theme = "hugo-theme-stack"
 enableRobotsTXT = true
 # Posts go live on their `date`: future-dated posts are left out until a build
@@ -7,6 +8,10 @@ enableRobotsTXT = true
 # date = 'YYYY-MM-DD' is midnight in this time zone.
 buildFuture = false
 timeZone = 'Europe/Copenhagen'
+
+# Only tags; no empty /categories/ page in the sitemap.
+[taxonomies]
+  tag = "tags"
 
 [pagination]
   pagerSize = 8
@@ -43,10 +48,18 @@ timeZone = 'Europe/Copenhagen'
   # (layouts/partials/_funcs/get-page-images.html).
   images = ["avatar.png"]
   author = "Tommy Eriksen"
-  description = "Geek at heart"
+  # Meta description for the home page and other pages without their own.
+  description = "Tommy Eriksen, Senior Cloud & Platform Architect in Denmark, writes about AI agents with guardrails, platform direction, security and racing."
   # Source repository. The footer links the build commit here.
   repository = "https://github.com/tn8or/tommyeriksen"
   mainSections = ["posts"]
+  # Search/sharing metadata: home <title> and the schema.org Person in
+  # layouts/_partials/head/custom.html (sameAs comes from menu.social).
+  [params.seo]
+    homeTitle = "Tommy Eriksen · Senior Cloud & Platform Architect"
+    jobTitle = "Senior Cloud & Platform Architect"
+    worksFor = "Lundbeck"
+    knowsAbout = ["Cloud architecture", "Platform engineering", "AI agents", "Azure", "AWS", "Infrastructure as code"]
   [params.sidebar]
     avatar = "/avatar.png"
     subtitle = "Geek at heart"

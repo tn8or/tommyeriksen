@@ -8,3 +8,56 @@
 {{- if site.Params.staging }}
 <meta name="robots" content="noindex, nofollow">
 {{- end }}
+{{- /* Structured data (schema.org JSON-LD) for search engines. */ -}}
+{{- $seo := site.Params.seo -}}
+{{- $sameAs := slice -}}
+{{- range site.Menus.social }}{{ $sameAs = $sameAs | append .URL }}{{ end -}}
+{{- $person := dict
+  "@type" "Person"
+  "@id" (print site.Home.Permalink "#person")
+  "name" site.Params.author
+  "url" site.Home.Permalink
+  "image" (absURL site.Params.sidebar.avatar)
+  "jobTitle" $seo.jobTitle
+  "sameAs" $sameAs
+-}}
+{{- with $seo.worksFor }}{{ $person = merge $person (dict "worksFor" (dict "@type" "Organization" "name" .)) }}{{ end -}}
+{{- with $seo.knowsAbout }}{{ $person = merge $person (dict "knowsAbout" .) }}{{ end -}}
+{{- $personRef := dict "@id" (print site.Home.Permalink "#person") -}}
+{{- $graph := slice -}}
+{{- if .IsHome -}}
+  {{- $graph = $graph | append $person (dict
+    "@type" "WebSite"
+    "@id" (print site.Home.Permalink "#website")
+    "url" site.Home.Permalink
+    "name" site.Title
+    "description" (partialCached "data/description" . .RelPermalink)
+    "author" $personRef
+    "inLanguage" site.Language.Locale
+  ) -}}
+{{- else if in (slice "/about/" "/about/cv/") .RelPermalink -}}
+  {{- $graph = $graph | append $person (dict
+    "@type" "ProfilePage"
+    "url" .Permalink
+    "name" (partialCached "data/title" . .RelPermalink)
+    "mainEntity" $personRef
+  ) -}}
+{{- else if and .IsPage (eq .Section "posts") -}}
+  {{- $post := dict
+    "@type" "BlogPosting"
+    "headline" .Title
+    "description" (partialCached "data/description" . .RelPermalink)
+    "url" .Permalink
+    "mainEntityOfPage" .Permalink
+    "datePublished" (.Date.Format "2006-01-02T15:04:05-07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
+    "author" (dict "@type" "Person" "@id" (print site.Home.Permalink "#person") "name" site.Params.author "url" site.Home.Permalink)
+    "inLanguage" site.Language.Locale
+  -}}
+  {{- with .Params.tags }}{{ $post = merge $post (dict "keywords" .) }}{{ end -}}
+  {{- with partial "_funcs/get-page-images" . }}{{ $post = merge $post (dict "image" (index . 0).Permalink) }}{{ end -}}
+  {{- $graph = $graph | append $post -}}
+{{- end -}}
+{{- with $graph }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
+{{- end }}

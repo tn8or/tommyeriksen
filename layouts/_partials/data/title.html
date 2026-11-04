@@ -1,0 +1,18 @@
+{{- /*
+  Overrides Stack's title partial (used by <title>, og:title, twitter:title)
+  so every title carries the author's name for search and sharing:
+  home → params.seo.homeTitle, others → "<page title> · <author>".
+*/ -}}
+{{- $author := site.Params.author -}}
+{{- $title := slice -}}
+{{- $paginator := partial "helper/paginator.html" . -}}
+{{- if and $paginator $paginator.HasPrev -}}
+  {{- $title = $title | append (printf "Page %d" $paginator.PageNumber) -}}
+{{- end -}}
+{{- if .IsHome -}}
+  {{- $title = $title | append (site.Params.seo.homeTitle | default $author | default site.Title) -}}
+{{- else -}}
+  {{- $title = $title | append .Title -}}
+  {{- with $author -}}{{- $title = $title | append . -}}{{- end -}}
+{{- end -}}
+{{- return delimit $title " · " -}}
