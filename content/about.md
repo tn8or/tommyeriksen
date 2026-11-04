@@ -1,5 +1,6 @@
 +++
 title = "About"
+description = "Tommy Eriksen: cloud and platform architect from western Zealand, family man and Sunday track racer on a 1998 Aprilia RSV Mille."
 +++
 
 Tommy of Kingdom Geek.

@@ -1,0 +1,16 @@
+{{- /*
+  Overrides Stack's description partial: page `description` first, else a
+  generated line for tag pages, else the post summary, else
+  params.description. Newlines are flattened.
+*/ -}}
+{{- $description := site.Params.description | default site.Params.sidebar.subtitle -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if eq .Kind "term" -}}
+  {{- $description = printf "Posts by %s on %s." site.Params.author .Title -}}
+{{- else if eq .Kind "taxonomy" -}}
+  {{- $description = printf "Topics %s writes about: AI agents, platforms, security, careers and motorcycles." site.Params.author -}}
+{{- else if .IsPage -}}
+  {{- $description = .Summary -}}
+{{- end -}}
+{{- return (replaceRE "\n" " " $description | plainify) -}}

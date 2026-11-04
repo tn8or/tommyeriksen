@@ -1,0 +1,20 @@
+{{- /*
+  Copy of Stack's provider/twitter.html. Change: twitter:image comes from
+  _funcs/get-page-images, like og:image, and
+  twitter:card follows the image's shape.
+*/ -}}
+{{- with .Site.Params.opengraph.twitter.site }}
+<meta name="twitter:site" content="@{{ . }}">
+<meta name="twitter:creator" content="@{{ . }}">
+{{- end }}
+{{- $title := partialCached "data/title" . .RelPermalink -}}
+{{- $description := partialCached "data/description" . .RelPermalink }}
+<meta name="twitter:title" {{ printf "content=%q" $title | safeHTMLAttr }}>
+<meta name="twitter:description" {{ printf "content=%q" $description | safeHTMLAttr }}>
+{{- with partial "_funcs/get-page-images" . }}
+  {{- /* A wide image gets the large card; a square one (the avatar fallback) the small card. */ -}}
+  {{- $card := "summary_large_image" -}}
+  {{- with (index . 0).Image }}{{ if lt (div (float .Width) .Height) 1.5 }}{{ $card = "summary" }}{{ end }}{{ end }}
+<meta name="twitter:card" content="{{ $card }}">
+<meta name="twitter:image" content='{{ (index . 0).Permalink }}'>
+{{- end }}
