@@ -1,5 +1,5 @@
 +++
-date = '2026-11-03'
+date = '2026-11-12'
 draft = false
 title = "Please included"
 description = "I try to talk to my AI agents the way I'd like to talk to people. The tone I use shapes the tone they answer in, and it trains me."
