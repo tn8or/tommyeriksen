@@ -163,11 +163,11 @@ jobs:
           if [ -n "${{ steps.target.outputs.staging_url }}" ]; then
             echo "Staging build is not indexable ..."
             echo "$out" | grep -q '^Disallow: /$'
-            docker exec "$name" curl -fsS http://127.0.0.1/ | grep -Eq '<meta name="?robots"? content="noindex'
+            docker exec "$name" curl -fsS http://127.0.0.1:8080/ | grep -Eq '<meta name="?robots"? content="noindex'
           else
             echo "Production build is indexable ..."
             echo "$out" | grep -q '^Allow: /$'
-            if docker exec "$name" curl -fsS http://127.0.0.1/ | grep -q noindex; then
+            if docker exec "$name" curl -fsS http://127.0.0.1:8080/ | grep -q noindex; then
               echo "Production page has noindex"; exit 1
             fi
           fi
