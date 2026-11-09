@@ -24,7 +24,7 @@ RUN echo "Building as of ${BUILD_TIME:-now}" && \
     fi
 
 # Stage 2: Serve with nginx
-FROM nginx:1.31.8-alpine
+FROM nginx/nginx-unprivileged:1.31.8-alpine
 COPY --from=builder /src/public /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
+EXPOSE 8080
