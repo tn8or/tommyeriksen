@@ -77,6 +77,14 @@ jobs:
 
             [registry."dockerhub-proxy.github-arc.svc.cluster.local:5000"]
               http = true
+              insecure = true
+
+            [registry."ghcr.io"]
+              mirrors = ["ghcr-proxy.github-arc.svc.cluster.local:5000"]
+
+            [registry."ghcr-proxy.github-arc.svc.cluster.local:5000"]
+              http = true
+              insecure = true
 
       # main (push, morning schedule, manual run) publishes :latest (production)
       # and a :staging build of main. Otherwise :staging comes only from a
@@ -205,6 +213,14 @@ jobs:
 
             [registry."dockerhub-proxy.github-arc.svc.cluster.local:5000"]
               http = true
+              insecure = true
+
+            [registry."ghcr.io"]
+              mirrors = ["ghcr-proxy.github-arc.svc.cluster.local:5000"]
+
+            [registry."ghcr-proxy.github-arc.svc.cluster.local:5000"]
+              http = true
+              insecure = true
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4
