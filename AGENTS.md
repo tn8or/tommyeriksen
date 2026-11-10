@@ -17,7 +17,7 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 ## The site
 
 - Hugo 0.167.0 extended. The theme is a git submodule under `themes/`; clone with `--recurse-submodules`.
-- Multi-stage `Dockerfile`: Hugo builds the site, nginx serves it (config in `nginx/`).
+- Hosting: Cloudflare Workers static assets (`wrangler.jsonc`). CI builds Hugo into `public/` and deploys it with wrangler; `worker/index.js` runs in front of every request (`run_worker_first`) and does what nginx used to: Markdown negotiation (`Accept: text/markdown` gets the page's `index.md`), `text/markdown; charset=utf-8`, `Vary: Accept`, `Cache-Control: private, no-cache` on pages, HSTS and CSP on every response, and www → apex (the zone's redirect rule normally answers www first). Missing pages get Hugo's `404.html`. Hostnames are Workers routes managed by `scripts/cloudflare-cutover.sh` (status, route, dns, rollback), not by wrangler, so the CI token only needs Workers Scripts edit rights.
 - Content: posts in `content/posts/`, page bundles for posts with images (`content/posts/<slug>/index.md` + images). TOML front matter (`+++`) with date, title, draft.
 - Tags: every post gets exactly one series tag in `tags`: `ai-agents`, `careers`, `security`, `platform` or `motorcycles`. Optional topic tags on top, only where they clearly fit: `leadership`, `lessons-learned`, `ai-in-practice`. Example: `tags = ['security', 'lessons-learned']`. The scheme can be extended; a new tag gets a `content/tags/<tag>/_index.md` with its display title (otherwise Hugo shows the slug title-cased, e.g. "Ai-Agents"). The tag scheme is also documented in itsaplan (context doc 8).
 - Front matter: every non-draft post needs `description` (max 155 chars), exactly one series tag and a valid `date`. `scripts/lint-front-matter.py` checks it in CI; the series list is `data/tags.toml`. Rules are in `README.md`.
@@ -28,10 +28,10 @@ Work on this repo is tracked in itsaplan project `WEBS` (MCP: https://itsaplan-a
 
 ## Build and deploy
 
-- `hugo --minify` must succeed before pushing. CI also builds the container and smoke-tests it.
+- `hugo --minify` must succeed before pushing. CI also smoke-tests every build through the Worker with `wrangler dev` (`scripts/smoke-test.sh production|staging`).
 - The commit SHA is passed to Hugo as `HUGO_PARAMS_commit`.
-- CI runs on a self-hosted runner. A push to `main`, the morning schedule (cron 06:00 UTC) and a manual run on `main` push `:latest`, which is what goes live. **Merging to `main` deploys tommyeriksen.dk.**
-- PR builds and manual runs on other branches pass `STAGING_URL` to the `Dockerfile`: baseURL `https://staging.tommyeriksen.dk/`, `--buildFuture`, and `params.staging` (noindex meta, `Disallow: /` in robots.txt). Only the `publish` job has `packages: write`; a main build also pushes a `:staging` build of `main` (future-dated posts included), and a manual run on another branch pushes `:staging` from that branch. PRs only build and smoke-test, since agents open PRs as the repo owner (HOME-33).
-- `.github/workflows/cleanup.yml` runs Sundays 03:00 UTC: deletes untagged `ghcr.io/tn8or/tommyeriksen` versions beyond the 10 newest (tagged images and their child manifests are kept) and prunes dangling images on the runner. A manual run defaults to dry-run. The host (k3s) garbage-collects its own images.
+- CI runs on a self-hosted runner. A push to `main`, the morning schedule (cron 06:00 UTC) and a manual run on `main` deploy production (Worker `tommyeriksen`) and a staging build of `main` with future-dated posts (Worker `tommyeriksen-staging`). **Merging to `main` deploys tommyeriksen.dk.** A manual run on another branch deploys that branch to staging. PRs only build and smoke-test, since agents open PRs as the repo owner (HOME-33).
+- Staging builds (PRs, manual runs on other branches, and a second build of every `main` run) use baseURL `https://staging.tommyeriksen.dk/`, `--buildFuture`, and `params.staging` (noindex meta, `Disallow: /` in robots.txt).
+- The Cloudflare token (`CLOUDFLARE_API_TOKEN`) lives in two GitHub environments and is only used by the `deploy` job: `cloudflare` (main only) and `cloudflare-staging` (any branch, requires Tommy's approval). The build job uploads the tested `out/production` and `out/staging`; the deploy job deploys exactly those.
 - Never push to `main` directly; work via PR.
-- Renovate auto-merges Hugo, Docker image, Actions and submodule bumps. Keep the Hugo version in `Dockerfile` and `.github/workflows/ci.yml` in sync.
+- Renovate auto-merges Hugo, wrangler (`WRANGLER_VERSION` in `ci.yml`), Actions and submodule bumps.
