@@ -65,24 +65,7 @@
         {{ end }}
         <li class="menu-bottom-section">
             <ol class="menu">
-                {{- $currentLanguageCode := .Language.Name -}}
-                {{ if hugo.IsMultilingual }}
-                    <li id="i18n-switch">  
-                        {{ partial "helper/icon" "language" }}
-                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
-                            {{ range .Site.Home.AllTranslations }}
-                                {{ $target := . }}
-                                {{ range $.AllTranslations }}
-                                    {{ if eq .Language.Name $target.Language.Name }}
-                                        {{ $target = . }}
-                                    {{ end }}
-                                {{ end }}
-                                <option value="{{ $target.RelPermalink }}" {{ if eq $target.Language.Name $currentLanguageCode }}selected{{ end }}>{{ .Language.Label }}</option>
-                            {{ end }}
-                        </select>
-                    </li>
-                {{ end }}
-
+                {{- /* Site is single-language; omit theme i18n <select onchange=location> (CodeQL js/xss-through-dom). */ -}}
                 {{ if .Site.Params.colorScheme.toggle }}
                     <li id="dark-mode-toggle">
                         {{ partial "helper/icon" "toggle-left" }}
