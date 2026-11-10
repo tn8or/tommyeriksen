@@ -75,14 +75,17 @@ echo "$out" | tail -n1 | grep -q '^200 text/plain'
 echo "$out" | grep -q '^User-agent: \*$'
 echo "$out" | grep -q '^Content-Signal: search=yes, ai-input=yes, ai-train=yes$'
 echo "$out" | grep -q '^Sitemap: https://.*/sitemap\.xml$'
+# Fetch the page once: `curl | grep -q` fails under pipefail when grep exits
+# early and curl gets SIGPIPE (exit 23).
+page=$(curl -fsS "$base/")
 if [ "$variant" = staging ]; then
   echo "Staging build is not indexable ..."
   echo "$out" | grep -q '^Disallow: /$'
-  curl -fsS "$base/" | grep -Eq '<meta name="?robots"? content="?noindex'
+  grep -Eq '<meta name="?robots"? content="?noindex' <<<"$page"
 else
   echo "Production build is indexable ..."
   echo "$out" | grep -q '^Allow: /$'
-  if curl -fsS "$base/" | grep -q noindex; then
+  if grep -q noindex <<<"$page"; then
     echo "Production page has noindex"; exit 1
   fi
 fi
