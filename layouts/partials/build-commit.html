@@ -1,5 +1,5 @@
 {{- /* Full source revision this build was produced from.
-     CI and Docker set site.Params.commit (HUGO_PARAMS_commit / GIT_COMMIT).
+     CI sets site.Params.commit (HUGO_PARAMS_commit).
      A local hugo build falls back to the git checkout when that is unset. */ -}}
 {{- $commit := site.Params.commit | default "" | string | strings.TrimSpace | lower -}}
 {{- if not $commit -}}
