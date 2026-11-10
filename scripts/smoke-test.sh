@@ -75,8 +75,10 @@ echo "$out" | tail -n1 | grep -q '^200 text/plain'
 echo "$out" | grep -q '^User-agent: \*$'
 echo "$out" | grep -q '^Content-Signal: search=yes, ai-input=yes, ai-train=yes$'
 echo "$out" | grep -q '^Sitemap: https://.*/sitemap\.xml$'
-# Fetch the page once: `curl | grep -q` fails under pipefail when grep exits
-# early and curl gets SIGPIPE (exit 23).
+# Save the page before grepping. `curl | grep -q` under `pipefail` exits 23
+# when grep finds a match and closes the pipe while curl is still writing
+# (curl: Failure writing output to destination). That skipped the deploy
+# on the staging half of a main build.
 page=$(curl -fsS "$base/")
 if [ "$variant" = staging ]; then
   echo "Staging build is not indexable ..."
