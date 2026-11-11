@@ -1,0 +1,12 @@
+{{- /*
+  Overrides Stack's head/colorScheme.html. Stack inlines these scripts, but the
+  Worker's CSP (script-src 'self', see worker/index.js) blocks inline scripts,
+  so the default dark scheme was never applied (WEBS-32). Same logic, served as
+  a small fingerprinted file. It stays synchronous (no defer/async) so the
+  scheme is set before first paint.
+*/ -}}
+{{- $default := site.Params.colorScheme.default | default "auto" -}}
+{{- $set := cond site.Params.colorScheme.toggle "if(!localStorage.getItem(k))localStorage.setItem(k,d);" "localStorage.setItem(k,d);" -}}
+{{- $js := printf `(function(){var k="StackColorScheme",d=%q;try{%s}catch(e){}var s=null;try{s=localStorage.getItem(k)}catch(e){}if(s===null)s=d;var dark=s==="dark"||(s==="auto"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.dataset.scheme=dark?"dark":"light"})();` $default $set -}}
+{{- $res := resources.FromString "ts/color-scheme.js" $js | fingerprint -}}
+<script src="{{ $res.RelPermalink }}"></script>

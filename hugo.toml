@@ -68,6 +68,10 @@ timeZone = 'Europe/Copenhagen'
   [params.colorScheme]
     toggle = true
     default = "dark"
+  # No comments. Stack enables Disqus by default, which renders an empty
+  # container plus an inline script and style the CSP blocks (WEBS-32).
+  [params.comments]
+    enabled = false
   [params.article]
     toc = false
     readingTime = true

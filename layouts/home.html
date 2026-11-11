@@ -1,3 +1,8 @@
+{{- /* The homepage renders the newest post in full. article-page gives it the
+     same card, text colours and image styling as the post page; without it
+     the text was black on the dark background (WEBS-32). */ -}}
+{{ define "body-class" }}article-page{{ end }}
+
 {{ define "main" }}
     {{- $paginator := partial "helper/paginator.html" . -}}
     {{- $posts := $paginator.Pages -}}

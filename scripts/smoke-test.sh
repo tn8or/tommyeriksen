@@ -39,6 +39,7 @@ csp=$(echo "$headers" | grep -i '^content-security-policy:')
 echo "$csp" | grep -q "default-src 'self'"
 ! echo "$csp" | grep -qi 'unsafe-eval'
 echo "$csp" | grep -q 'https://tracker.metricool.com'
+echo "$csp" | grep -q 'https://static.cloudflareinsights.com'
 
 echo "GET missing page returns 404 ..."
 code=$(curl -s -o /dev/null -w '%{http_code}' "$base/ci-smoke-missing")
@@ -80,6 +81,16 @@ echo "$out" | grep -q '^Sitemap: https://.*/sitemap\.xml$'
 # (curl: Failure writing output to destination). That skipped the deploy
 # on the staging half of a main build.
 page=$(curl -fsS "$base/")
+echo "No inline scripts (the CSP blocks them) ..."
+if grep -Eq '<script>|<script type="?(module|text/javascript)"?>' <<<"$page"; then
+  echo "Homepage has an inline script"; exit 1
+fi
+echo "Fingerprinted assets are cached as immutable ..."
+css=$(grep -Eo '/scss/style\.min\.[0-9a-f]+\.css' <<<"$page" | head -n1)
+curl -fsSI "$base$css" | grep -qi '^cache-control: public, max-age=31536000, immutable'
+if curl -fsSI "$base/" | grep -qi 'immutable'; then
+  echo "Page is cached as immutable"; exit 1
+fi
 if [ "$variant" = staging ]; then
   echo "Staging build is not indexable ..."
   echo "$out" | grep -q '^Disallow: /$'
