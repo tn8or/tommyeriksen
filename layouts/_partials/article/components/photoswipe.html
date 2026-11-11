@@ -1,0 +1,6 @@
+{{- /*
+  Overrides Stack's PhotoSwipe loader with nothing (WEBS-32). It is an inline
+  module script (blocked by the Worker's CSP) that pulls PhotoSwipe from a CDN
+  (also blocked), and it only acts on <figure> galleries, which our
+  render-image hook doesn't produce: post images link to the full-size copy.
+*/ -}}
