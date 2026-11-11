@@ -1,7 +1,7 @@
 # {{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}
 {{ with site.Params.description }}{{ if $.IsHome }}
 {{ . }}
-{{ end }}{{ end }}{{ with .RawContent | strings.TrimSpace }}
+{{ end }}{{ end }}{{ with .RenderShortcodes | strings.TrimSpace }}
 {{ . }}
 {{ end }}
 {{- $pages := .Pages }}{{ if .IsHome }}{{ $pages = where site.RegularPages "Section" "posts" }}{{ end }}

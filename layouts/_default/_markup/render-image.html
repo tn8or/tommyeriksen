@@ -4,12 +4,11 @@
   the long edge (never upscaled, re-encoded so EXIF/GPS is dropped); the raw
   original is not referenced, so Hugo doesn't publish it. Paths are
   resolved to permalinks so they also work where the post body is rendered on
-  another page (homepage). Remote images, static files, SVG and GIF render as a
+  another page. Remote images, static files, SVG and GIF render as a
   plain img.
 */ -}}
 {{- $src := .Destination -}}
-{{- /* The first image in a body is the top image on a post page and on the
-     homepage (which renders the newest post in full), i.e. the LCP element:
+{{- /* The first image in a body is the top image on a post page, i.e. the LCP element:
      load it eagerly with high priority; the rest stay lazy (WEBS-29). */ -}}
 {{- $loading := cond (eq .Ordinal 0) `fetchpriority="high"` `loading="lazy"` -}}
 {{- $res := "" -}}

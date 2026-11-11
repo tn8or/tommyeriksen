@@ -28,9 +28,9 @@ timeZone = 'Europe/Copenhagen'
     url = "/tags/"
     weight = 2
   [[menu.main]]
-    identifier = "start-here"
-    name = "Start here"
-    url = "/start-here/"
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
     weight = 3
   [[menu.main]]
     identifier = "about"
