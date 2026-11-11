@@ -1,6 +1,9 @@
 +++
-title = "Start here"
-description = "A guide to what I write about: AI agents, platform direction and a bit of the person behind it."
+# The homepage (WEBS-33): this guide, then the newest posts (layouts/home.html).
+# Title and meta description come from params.seo.homeTitle and
+# params.description in hugo.toml. /start-here/ was its old address.
+aliases = ['/start-here/']
+heading = 'Start here'
 +++
 
 Hi, I'm Tommy. I've spent most of my career on platforms: building them, running them and deciding where they should go next. These days AI agents write a good part of my infrastructure code, and I spend my time on the guardrails.

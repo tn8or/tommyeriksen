@@ -1,26 +1,35 @@
-{{- /* The homepage renders the newest post in full. article-page gives it the
-     same card, text colours and image styling as the post page; without it
-     the text was black on the dark background (WEBS-32). */ -}}
+{{- /* Homepage (WEBS-33): the "Start here" guide from content/_index.md, then
+     the newest posts and a link to the full list at /posts/. article-page (body
+     class) gives the guide the same card and text colours as a post page. */ -}}
 {{ define "body-class" }}article-page{{ end }}
 
 {{ define "main" }}
-    {{- $paginator := partial "helper/paginator.html" . -}}
-    {{- $posts := $paginator.Pages -}}
-    {{- with first 1 $posts -}}
-        {{- range . -}}
-            {{ partial "article/article" . }}
-        {{- end -}}
-    {{- end -}}
+    <article class="main-article">
+        {{- with .Params.heading }}
+        <header class="article-header">
+            <div class="article-details">
+                <div class="article-title-wrapper">
+                    <h1 class="article-title">{{ . }}</h1>
+                </div>
+            </div>
+        </header>
+        {{- end }}
+        <section class="article-content">
+            {{ .Content }}
+        </section>
+    </article>
 
-    {{- with after 1 $posts -}}
+    {{- $posts := first 5 (where site.RegularPages "Section" "posts") -}}
+    {{- with $posts -}}
+        <h2 class="section-title">Latest posts</h2>
         <section class="article-list--compact">
             {{- range . -}}
                 {{ partial "article-list/compact" . }}
             {{- end -}}
         </section>
+        <p class="all-posts"><a href="{{ relref $ "/posts" }}">All posts →</a></p>
     {{- end -}}
 
-    {{- partial "pagination.html" . -}}
     {{- partial "footer/footer" . -}}
 {{ end }}
 
