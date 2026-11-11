@@ -17,7 +17,7 @@
   "@id" (print site.Home.Permalink "#person")
   "name" site.Params.author
   "url" site.Home.Permalink
-  "image" (absURL site.Params.sidebar.avatar)
+  "image" (partial "_funcs/person-image" .)
   "jobTitle" $seo.jobTitle
   "sameAs" $sameAs
 -}}

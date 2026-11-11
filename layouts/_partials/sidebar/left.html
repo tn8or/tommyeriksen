@@ -7,15 +7,21 @@
 
     <header>
         {{ with .Site.Params.sidebar.avatar }}
-            {{- $avatar := partial "helper/image" (dict "Image" . "Resources" resources "Context" $) -}}
+            {{- /* Shown at 100x100: serve a 200px (retina) WebP with a PNG fallback
+                 instead of the 1280px original (WEBS-29). Not lazy: it is above the fold. */ -}}
+            {{- $orig := or (site.Home.Resources.Get (strings.TrimPrefix "/" .)) (resources.Get (strings.TrimPrefix "/" .)) -}}
             <figure class="site-avatar">
                 <a href="{{ $.Site.Home.RelPermalink }}">
-                    <img src="{{ $avatar.Permalink }}" 
-                        width="{{ $avatar.Width }}"
-                        height="{{ $avatar.Height }}"
-                        class="site-logo"
-                        loading="lazy"
-                        alt="{{ $.Site.Params.author | default $.Site.Title }}">
+                {{- if $orig -}}
+                    {{- $webp := $orig.Fill "200x200 webp q85 Lanczos" -}}
+                    {{- $png := $orig.Fill "200x200 png Lanczos" }}
+                    <picture>
+                        <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+                        <img src="{{ $png.RelPermalink }}" width="100" height="100" class="site-logo" decoding="async" alt="{{ $.Site.Params.author | default $.Site.Title }}">
+                    </picture>
+                {{- else }}
+                    <img src="{{ . }}" width="100" height="100" class="site-logo" alt="{{ $.Site.Params.author | default $.Site.Title }}">
+                {{- end }}
                 </a>
                 {{ with $.Site.Params.sidebar.emoji }}
                     <span class="emoji">{{ . }}</span>
