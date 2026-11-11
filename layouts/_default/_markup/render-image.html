@@ -8,6 +8,10 @@
   plain img.
 */ -}}
 {{- $src := .Destination -}}
+{{- /* The first image in a body is the top image on a post page and on the
+     homepage (which renders the newest post in full), i.e. the LCP element:
+     load it eagerly with high priority; the rest stay lazy (WEBS-29). */ -}}
+{{- $loading := cond (eq .Ordinal 0) `fetchpriority="high"` `loading="lazy"` -}}
 {{- $res := "" -}}
 {{- if and (not (urls.Parse $src).Scheme) (not (hasPrefix $src "/")) -}}
   {{- $res = .PageInner.Resources.Get $src -}}
@@ -27,8 +31,8 @@
     {{- $srcset = $srcset | append (printf "%s %dw" $fallback.RelPermalink $res.Width) -}}
   {{- end -}}
   {{- $full := $res.Fit "3000x3000 q85" -}}
-  <a href="{{ $full.RelPermalink }}"><img class="post-image" src="{{ $fallback.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(max-width: 800px) 100vw, 800px" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" loading="lazy" decoding="async" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}></a>
+  <a href="{{ $full.RelPermalink }}"><img class="post-image" src="{{ $fallback.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(max-width: 800px) 100vw, 800px" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" {{ $loading | safeHTMLAttr }} decoding="async" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}></a>
 {{- else -}}
   {{- with $res -}}{{- $src = .RelPermalink -}}{{- end -}}
-  <img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+  <img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} {{ $loading | safeHTMLAttr }}>
 {{- end -}}

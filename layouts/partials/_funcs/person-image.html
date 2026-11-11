@@ -1,0 +1,7 @@
+{{- /* schema.org Person image: a 512px copy of the avatar rather than the 1280px, 2.5 MB original (WEBS-29). */ -}}
+{{- $a := site.Params.sidebar.avatar -}}
+{{- $url := absURL $a -}}
+{{- with or (site.Home.Resources.Get (strings.TrimPrefix "/" $a)) (resources.Get (strings.TrimPrefix "/" $a)) -}}
+  {{- $url = (.Fill "512x512 png Lanczos").Permalink -}}
+{{- end -}}
+{{- return $url -}}
