@@ -1,0 +1,22 @@
+{{- /*
+  Overrides Stack's partial, which emits inline scripts that the CSP
+  (script-src 'self') blocks, so params.colorScheme.default never applied
+  (WEBS-32). The same logic is built into a fingerprinted external file and
+  loaded synchronously in <head> so the scheme is set before first paint.
+*/ -}}
+{{- $p := site.Params.colorScheme -}}
+{{- $js := printf `(function () {
+  var key = 'StackColorScheme';
+  try {
+    if (%t || !localStorage.getItem(key)) localStorage.setItem(key, %q);
+  } catch (e) {}
+  var item = null;
+  try { item = localStorage.getItem(key); } catch (e) {}
+  if (!item) item = %q;
+  var dark = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+  document.documentElement.dataset.scheme =
+    item === 'dark' || (item === 'auto' && dark) ? 'dark' : 'light';
+})();
+` (not $p.toggle) (string $p.default) (string $p.default) -}}
+{{- $script := resources.FromString "js/color-scheme.js" $js | minify | fingerprint -}}
+<script src="{{ $script.RelPermalink }}"></script>

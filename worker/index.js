@@ -8,11 +8,17 @@
 // it out with q=0) gets the page's index.md instead of index.html.
 const WANTS_MARKDOWN = /text\/markdown(?!\s*;\s*q\s*=\s*0(\.0*)?\s*(,|$))/i;
 
-// Headers added to every response.
+// Files whose name changes with their content never change under one URL:
+// Hugo's fingerprinted CSS/JS (name.<sha256>.ext) and processed images
+// (name_hu_<hash>.ext). Browsers may keep them for a year (WEBS-32).
+const FINGERPRINTED = /(\.[0-9a-f]{64}\.(css|js)|_hu_[0-9a-f]{16}\.[a-z0-9]+)$/i;
+
+// Headers added to every response. CSP allows Cloudflare Web Analytics
+// (beacon script and its reporting endpoint, WEBS-32).
 const SECURITY_HEADERS = {
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Content-Security-Policy":
-    "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://tracker.metricool.com; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+    "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data: https://tracker.metricool.com; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
 };
 
 export default {
@@ -29,7 +35,7 @@ export default {
       response = await markdown(request, url, env);
     }
     response ??= await env.ASSETS.fetch(request);
-    return withHeaders(response);
+    return withHeaders(response, url);
   },
 };
 
@@ -42,7 +48,7 @@ async function markdown(request, url, env) {
   return response.ok || response.status === 304 ? response : null;
 }
 
-function withHeaders(original) {
+function withHeaders(original, url) {
   const response = new Response(original.body, original);
   const headers = response.headers;
 
@@ -58,6 +64,8 @@ function withHeaders(original) {
   headers.append("Vary", "Accept");
   if (/^text\/(html|markdown)/i.test(headers.get("Content-Type") || "")) {
     headers.set("Cache-Control", "private, no-cache");
+  } else if (original.ok && FINGERPRINTED.test(url.pathname)) {
+    headers.set("Cache-Control", "public, max-age=31536000, immutable");
   }
 
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {

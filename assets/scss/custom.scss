@@ -1,9 +1,12 @@
 :root {
-    --accent-color: #0d6efd;
+    // Colours meet WCAG AA (4.5:1) on the body and card backgrounds (WEBS-32).
+    --accent-color: #0a58ca;
     --accent-color-darker: #2a3149;
+    --card-text-color-secondary: #646464;
+    --card-text-color-tertiary: #646464;
 
     &[data-scheme="dark"] {
-        --accent-color: #8b92a9;
+        --accent-color: #b4bad0;
         --accent-color-darker: #3d4563;
     }
 }
@@ -20,4 +23,11 @@
     height: 1px;
     opacity: 0;
     pointer-events: none;
+}
+
+// Resized post images are 800px wide; keep them inside the column on mobile
+// (WEBS-32).
+.post-image {
+    max-width: 100%;
+    height: auto;
 }

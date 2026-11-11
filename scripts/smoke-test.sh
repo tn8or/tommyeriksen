@@ -39,6 +39,15 @@ csp=$(echo "$headers" | grep -i '^content-security-policy:')
 echo "$csp" | grep -q "default-src 'self'"
 ! echo "$csp" | grep -qi 'unsafe-eval'
 echo "$csp" | grep -q 'https://tracker.metricool.com'
+echo "$csp" | grep -q "script-src 'self' https://static.cloudflareinsights.com"
+! echo "$csp" | grep -qi 'unsafe-inline'
+
+echo "Fingerprinted assets are immutable, no inline scripts ..."
+page=$(curl -fsS "$base/")
+! echo "$page" | grep -Eq '<script( type=(text/)?javascript)?>'
+asset=$(echo "$page" | grep -Eo '/(ts|js|scss)/[^" >]*\.[0-9a-f]{64}\.(js|css)' | head -n1)
+echo "$asset"
+curl -fsSI "$base$asset" | grep -qi '^cache-control: public, max-age=31536000, immutable'
 
 echo "GET missing page returns 404 ..."
 code=$(curl -s -o /dev/null -w '%{http_code}' "$base/ci-smoke-missing")
