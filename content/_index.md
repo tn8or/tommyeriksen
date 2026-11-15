@@ -6,9 +6,7 @@ aliases = ['/start-here/']
 heading = 'Cloud & platform architect, geek at heart'
 +++
 
-Hi, I'm Tommy Eriksen, a senior cloud and platform architect in Denmark. I've spent 25 years in infrastructure and platforms: building them, running them and deciding where they should go next. Eight of those years were in Danish banking technology at BEC, where I was product owner for the Azure Cloud Center of Excellence and later Head of Operational Security. Today I'm senior cloud architect at Lundbeck, working across AWS and Azure in a regulated pharma setting.
-
-On the side I own the infrastructure behind We Are Falcon's live-TV software. There, AI agents write a good part of the infrastructure code, and I spend my time on the guardrails and on the accountability for what reaches production.
+Hi, I'm Tommy Eriksen, a senior cloud and platform architect in Denmark. I've spent 25 years on infrastructure and platforms: building them, running them and deciding where they should go next. Eight of those years were in Danish banking technology, where I led departments and owned platforms supporting 25% of Danish banking customers. Today I work on AWS and Azure at Lundbeck, and I own the infrastructure behind We Are Falcon's live-TV software, where AI agents write a good part of the infrastructure code and I spend my time on architecture and guardrails.
 
 Most of what I write here comes back to two questions.
 
