@@ -62,7 +62,7 @@ timeZone = 'Europe/Copenhagen'
     knowsAbout = ["Cloud architecture", "Platform engineering", "AI agents", "Azure", "AWS", "Infrastructure as code"]
   [params.sidebar]
     avatar = "/avatar.png"
-    subtitle = "Geek at heart"
+    subtitle = "Platforms, AI agents and guardrails"
   [params.footer]
     since = 2026
   [params.colorScheme]
