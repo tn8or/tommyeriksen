@@ -6,7 +6,7 @@ aliases = ['/start-here/']
 heading = 'Cloud & platform architect, geek at heart'
 +++
 
-Hi, I'm Tommy Eriksen, a senior cloud and platform architect in Denmark. I've spent 25 years on infrastructure and platforms: building them, running them and deciding where they should go next. Eight of those years were in Danish banking technology, where I led departments and owned platforms supporting 25% of Danish banking customers. Today I work on AWS and Azure at Lundbeck, and I own the infrastructure behind We Are Falcon's live-TV software, where AI agents write a good part of the infrastructure code and I spend my time on architecture and guardrails.
+Hi, I'm Tommy Eriksen, a senior cloud and platform architect in Denmark. I've spent 25 years on infrastructure and platforms: building them, running them and deciding where they should go next. Eight of those years were in Danish banking technology, where I led departments and owned platforms supporting more than 20% of Danish banking customers. Today I work on AWS and Azure at Lundbeck, and I own the infrastructure behind We Are Falcon's live-TV software, where AI agents write a good part of the infrastructure code and I spend my time on architecture and guardrails.
 
 Most of what I write here comes back to two questions.
 
@@ -19,6 +19,7 @@ Most of what I write here comes back to two questions.
 ## How do you set a platform direction that actually lands in production?
 
 - [Why I'm suspicious of an empty queue]({{< ref "posts/suspicious-of-an-empty-queue" >}})
+- [From dead box to log in]({{< ref "posts/from-dead-box-to-log-in" >}})
 
 ## And a bit of the person behind it
 
