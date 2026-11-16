@@ -19,6 +19,9 @@ concurrency:
 env:
   STAGING_URL: https://staging.tommyeriksen.dk/
   WRANGLER_VERSION: "4.162.0"
+  # Hugo 0.170 dropped LibSass; the Stack theme's toCSS needs the `sass` binary.
+  DART_SASS_VERSION: "1.108.2"
+  DART_SASS_SHA256: "32d2eb5b83cbc180fce9657ff3c57401a9006c59eccfe0bfdde0aa755a66d42f"
 
 jobs:
   # Lint, build and smoke-test every event. No secrets: PR code (agents open
@@ -60,6 +63,15 @@ jobs:
         with:
           hugo-version: "0.169.0"
           extended: true
+
+      - name: Set up Dart Sass
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/dart-sass.tar.gz" \
+            "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+          echo "${DART_SASS_SHA256}  $RUNNER_TEMP/dart-sass.tar.gz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/dart-sass"
+          tar -xzf "$RUNNER_TEMP/dart-sass.tar.gz" -C "$RUNNER_TEMP/dart-sass"
+          echo "$RUNNER_TEMP/dart-sass/dart-sass" >> "$GITHUB_PATH"
 
       # A build of main deploys production and refreshes staging with a build
       # of main that includes future-dated posts, to preview merged posts
