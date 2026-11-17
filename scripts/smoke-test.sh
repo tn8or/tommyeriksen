@@ -86,9 +86,14 @@ if grep -Eq '<script>|<script type="?(module|text/javascript)"?>' <<<"$page"; th
   echo "Homepage has an inline script"; exit 1
 fi
 echo "Fingerprinted assets are cached as immutable ..."
-css=$(grep -Eo '/scss/style\.min\.[0-9a-f]+\.css' <<<"$page" | head -n1)
-curl -fsSI "$base$css" | grep -qi '^cache-control: public, max-age=31536000, immutable'
-if curl -fsSI "$base/" | grep -qi 'immutable'; then
+# Save headers before matching. `curl | grep -q` under pipefail exits 23 when
+# grep finds a hit and closes the pipe while curl is still writing, which
+# skips the deploy. Same failure as the noindex check above.
+css=$(grep -Eo -m 1 '/scss/style\.min\.[0-9a-f]+\.css' <<<"$page")
+css_headers=$(curl -fsSI "$base$css" | tr -d '\r')
+grep -qi '^cache-control: public, max-age=31536000, immutable' <<<"$css_headers"
+page_headers=$(curl -fsSI "$base/" | tr -d '\r')
+if grep -qi 'immutable' <<<"$page_headers"; then
   echo "Page is cached as immutable"; exit 1
 fi
 if [ "$variant" = staging ]; then
