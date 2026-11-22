@@ -1,6 +1,6 @@
 +++
 date = '2026-12-03'
-draft = false
+draft = true
 title = "The backup that needed the network"
 description = "My network config backups ran as planned and monitoring was green. At 3am I found they lived on a server that needed the network they could restore."
 tags = ['platform', 'lessons-learned']
