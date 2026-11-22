@@ -18,7 +18,7 @@ concurrency:
 
 env:
   STAGING_URL: https://staging.tommyeriksen.dk/
-  WRANGLER_VERSION: "4.165.0"
+  WRANGLER_VERSION: "4.166.0"
   # Hugo 0.170 dropped LibSass; the Stack theme's toCSS needs the `sass` binary.
   DART_SASS_VERSION: "1.108.2"
   DART_SASS_SHA256: "32d2eb5b83cbc180fce9657ff3c57401a9006c59eccfe0bfdde0aa755a66d42f"
