@@ -12,6 +12,8 @@ tags = ['motorcycles', 'lessons-learned']
 
 My first motorcycle trackday felt like the safest place I'd ever ridden. On day two, I crashed.
 
+Last month I wrote about focus on a racetrack, and how the world up there lasts about [ten seconds at a time](https://tommyeriksen.dk/posts/ten-seconds-at-a-time/).
+
 Some years back, I'd done an instructor-led riding course on a racetrack and discovered it was probably the most fun I could have by myself. A bit of research and soul searching later, I'd bought a dedicated track bike and signed up for my first trackday.
 
 Late on a Friday night, I drove to Ring Knutstorp in Sweden with the bike on my new-to-me trailer, having signed up for track riding on Saturday and Sunday. I set up camp when I got there, and next morning discovered I'd landed next to the nicest of neighbours. They answered all my beginner questions and were just as thrilled to be there as I was. I've since learned that all the neighbours are nice, and everybody is absolutely itching to be there. That's why we do it :-)
